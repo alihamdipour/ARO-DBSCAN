@@ -84,7 +84,7 @@ def params(pop_pos,npop,it):
         min_Pts=1  
     return eps,min_Pts
 
-def update_worest(popPos,popfit,it,trainX, testX, trainy, testy,best_x,best_f, best_acc,best_cols):
+def update_ADD(popPos,popfit,it,trainX, testX, trainy, testy,best_x,best_f, best_acc,best_cols):
 
     popfit,popPos  = (list(t) for t in zip(*sorted(zip(popfit, popPos) ,key=lambda x:x[0])))
     radus,min_Pts=params(popPos,len(popPos),it)
@@ -183,6 +183,6 @@ def AROADD(dim,max_it, npop,trainX, testX, trainy, testy , pop_pos_init, pop_fit
                best_x = pop_pos[i][:]
                best_acc=tempacc
                best_cols=tempcols
-        pop_pos,pop_fit,best_x,best_f,best_acc,best_cols=update_worest(pop_pos,pop_fit,it,trainX, testX, trainy, testy,best_x,best_f, best_acc,best_cols)
+        pop_pos,pop_fit,best_x,best_f,best_acc,best_cols=update_ADD(pop_pos,pop_fit,it,trainX, testX, trainy, testy,best_x,best_f, best_acc,best_cols)
         his_best_fit.append(best_f.tolist())
     return best_x, best_f, his_best_fit,best_acc,best_cols
